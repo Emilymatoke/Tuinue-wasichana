@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css'; // Import global CSS file
+import Header from './Header';
+import Footer from './Footer';
+import HomePage from './HomePage';
+import CharityListingPage from './CharityListingPage';
+import CharityDetailPage from './CharityDetailPage';
+import UserDashboardPage from './UserDashboardPage';
+import AdminDashboardPage from './AdminDashboardPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <main className="main-content">
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/charities" exact component={CharityListingPage} />
+            <Route path="/charities/:id" component={CharityDetailPage} />
+            <Route path="/dashboard" component={UserDashboardPage} />
+            <Route path="/admin" component={AdminDashboardPage} />
+            {/* Add more routes as needed */}
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
