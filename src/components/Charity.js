@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Progress bar component
 const ProgressBar = ({ label, progress }) => {
@@ -41,18 +41,44 @@ function CharityPage() {
       image: 'https://www.shutterstock.com/image-photo/happy-little-girl-walking-street-600nw-2187361011.jpg',  
     },
     
-    // Add more impact stories as needed
   ];
+
+  
+  const [joinFormVisible, setJoinFormVisible] = useState(false);
+  const [requestMessage, setRequestMessage] = useState('');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    message: '',
+  });
+
+  const handleJoinFormToggle = () => {
+    setJoinFormVisible(!joinFormVisible);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleJoinRequest = (e) => {
+    e.preventDefault();
+    setRequestMessage('Your request to join has been submitted. Thank you for your interest!');
+    setJoinFormVisible(false); 
+  };
+
 
   return (
     <div className="charity-page">
       <header className="hero-section">
         <div className="hero-content">
-          <h1>Tuinue Wasichana</h1>
-          <p>Empowering school-going girls with sanitary towels, clean water, and proper sanitation facilities.</p>
-          <button className="btn btn-primary">Donate Now</button>
+          <h1>Why Join Us?</h1>
+          <p>Joining our association is crucial because every member contributes to our mission of empowering girls with essential resources and opportunities.</p>
+          <button className="btn btn-primary" onClick={handleJoinFormToggle}>Join Us Today</button>
         </div>
       </header>
+      
       <section className="impact-section">
         <div className="container">
           <h2>Our Charity Impact</h2>
@@ -111,10 +137,65 @@ function CharityPage() {
         </div>
       </section>
 
+
+      {/* Modal Join Form */}
+      {joinFormVisible && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-button" onClick={handleJoinFormToggle}>X</button>
+            <h2>Join Us Today</h2>
+            <form onSubmit={handleJoinRequest}>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="tel"
+                name="phoneNumber"
+                placeholder="Phone Number"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Why do you want to join us?"
+                rows={4}
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
+              <button type="submit" className="btn btn-primary">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {requestMessage && (
+        <section className="request-message-section">
+          <div className="container">
+            <p>{requestMessage}</p>
+          </div>
+        </section>
+      )}
+      
+  
 {/* Impact Stories */}
 <section className="impact-stories-section">
   <div className="container">
-    <h2>Impact Stories</h2>
+    <h2>Beneficiary Stories</h2>
     <div className="impact-stories">
       {impactStories.map((story, index) => (
         <div key={index} className="impact-story">
@@ -130,13 +211,9 @@ function CharityPage() {
     </div>
   </div>
 </section>
-
-
-
-
-    
-    </div>
+</div>
   );
 }
 
 export default CharityPage;
+
