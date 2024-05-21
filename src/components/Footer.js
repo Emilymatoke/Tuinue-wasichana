@@ -1,29 +1,21 @@
-// Footer.js
-
 import React from 'react';
-import './Footer.css'; // Import CSS file for footer styles
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-links">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
-        <a href="/contact-us">Contact Us</a>
-      </div>
-      <div className="social-media">
-        <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter"></i>
-        </a>
-        <a href="https://facebook.com/example" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-facebook"></i>
-        </a>
-        <a href="https://instagram.com/example" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-instagram"></i>
-        </a>
+    <footer className="bg-gray-800 py-6">
+      <div className="container mx-auto">
+        <div className="flex justify-between items-center">
+          <div className="text-white">
+            <p className="text-sm">&copy; 2024 Tuinue Wasichana. All rights reserved.</p>
+            <p className="text-sm">Privacy Policy | Terms of Service</p>
+          </div>
+          <div className="text-white">
+            <p className="text-sm">Contact Us: +254 719 405 599 | info@tuinuewasichana.com</p>
+          </div>
+        </div>
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
