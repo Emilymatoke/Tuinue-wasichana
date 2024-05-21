@@ -1,72 +1,81 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Container, Nav, Navbar, Button, Offcanvas } from 'react-bootstrap';
-import logo from '../assets/logo.png'; // Adjust the path to your logo
+import logo from '../assets/logo.png';
 
-export default function NavBar({ user }) {
-    /* Offcanvas Setters */
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+function NavBar({ user }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  return (
+    <>
+      <header className="bg-blue-800 text-white py-2">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex-1">
+            <p>Welcome to Tuinue Wasichana</p>
+          </div>
+          <div className="flex-1 text-right">
+            <span className="mr-4">
+              <i className="fa fa-phone"></i> +254 719 405 599
+            </span>
+            <span className="mr-4">
+              <i className="fa fa-envelope"></i> <a href="mailto:info@tuinuewasichana.com">info@tuinuewasichana.com</a>
+            </span>
+          </div>
+          <div className="flex-1 text-right">
+            <span>
+              <i className="fa fa-user"></i> <a href="#">{user ? `Welcome ${user['name']}` : 'Welcome Guest'}</a>
+            </span>
+          </div>
+        </div>
+      </header>
 
-    return (
-        <>
-            <header>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4 col-sm-5">
-                            <p>Welcome to Tuinue Wasichana</p>
-                        </div>
-                        <div className="col-md-6 col-sm-6 text-align-right">
-                            <span className="phone-icon"><i className="fa fa-phone"></i> +254 719 405 599</span>
-                            <span className="email-icon"><i className="fa fa-envelope-o"></i> <a href="mailto:info@tuinuewasichana.com">info@tuinuewasichana.com</a></span>
-                        </div>
-                        <div className="col-md-2 col-sm-1">
-                            <span className="user-icon"><i className="fa fa-user"></i> <a href="#">Welcome {user ? user['name'] : "Guest"}</a></span>
-                        </div>
-                    </div>
-                </div>
-            </header>
+      <nav className="bg-gray-900 text-white py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center text-white">
+              <img src={logo} alt="Tuinue Wasichana Logo" className="h-8 w-8 mr-2" />
+              <span className="font-semibold text-xl">Tuinue Wasichana</span>
+            </Link>
+          </div>
+          <div className="hidden md:flex space-x-4">
+            <NavLink to="/" className="hover:text-gray-400">Home</NavLink>
+            <NavLink to="/about" className="hover:text-gray-400">About</NavLink>
+            <NavLink to="/donate" className="hover:text-gray-400">Donate</NavLink>
+            <button onClick={handleShow} className="hover:text-gray-400">
+              Menu
+            </button>
+          </div>
+          <div className="md:hidden">
+            <button onClick={handleShow} className="text-white focus:outline-none">
+              <i className="fa fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
 
-            <Navbar className="p-2 text-light" style={{ backgroundColor: '#ff69b4' }} expand="lg">
-                <Container>
-                    <Navbar.Brand as={Link} to="/">
-                        <img alt="Tuinue Wasichana Logo" src={logo} width="30" height="30" className="d-inline-block align-top" />{' '}
-                        Tuinue Wasichana
-                    </Navbar.Brand>
-                    <Button className="shadow-none d-lg-none border-0" onClick={handleShow}>
-                        <span className="navbar-toggler-icon"></span>
-                    </Button>
-                    <Offcanvas show={show} onHide={handleClose} responsive="lg">
-                        <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Tuinue Wasichana</Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                                <Nav.Link as={NavLink} to="/about">About Us</Nav.Link>
-                                <Nav.Link as={NavLink} to="/fundraise">Ways to Fundraise</Nav.Link>
-                                <Nav.Link as={NavLink} to="/charities">Charities</Nav.Link>
-                                <Nav.Link as={NavLink} to={user ? "/donate" : "/login"}>Donate</Nav.Link>
-                                <div className="ms-4">
-                                    {!user && (
-                                        <>
-                                            <Button variant="transparent border border-white">
-                                                <NavLink to='/signup'>Sign Up</NavLink>
-                                            </Button>
-                                            <Button className="ms-2" variant="transparent border border-white">
-                                                <NavLink to='/login'>Log In</NavLink>
-                                            </Button>
-                                        </>
-                                    )}
-                                </div>
-                            </Nav>
-                        </Offcanvas.Body>
-                    </Offcanvas>
-                </Container>
-            </Navbar>
-        </>
-    );
+      {show && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex justify-end">
+          <div className="bg-white w-64 h-full shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-xl font-semibold">Tuinue Wasichana</h2>
+              <button onClick={handleClose} className="text-gray-600 focus:outline-none">
+                <i className="fa fa-times"></i>
+              </button>
+            </div>
+            <nav className="p-4">
+              <NavLink to="/" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Home</NavLink>
+              <NavLink to="/about" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>About</NavLink>
+              <NavLink to="/donate" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Donate</NavLink>
+              <NavLink to="/signup" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Sign Up</NavLink>
+              <NavLink to="/login" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Login</NavLink>
+            </nav>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
+
+export default NavBar;

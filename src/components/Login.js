@@ -1,89 +1,53 @@
-import React, { useState } from 'react';
+import { useFormik } from "formik";
+import { Container } from 'react-bootstrap';
+import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
-function LoginModal({ isOpen, onClose, onLogin, loginError }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+export default function Login({ onLogin }) {
+    const navigate = useNavigate();
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            username: "",
+            password: "",
+        },
+        onSubmit: (values) => {
+            onLogin(values);
+            formik.resetForm();
+            navigate('/dashboard');
+        }
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onLogin(username, password)
-      .then(() => {
-        setSuccessMessage('User logged in successfully.');
-        setUsername('');
-        setPassword('');
-        setTimeout(() => {
-          setSuccessMessage('');
-          onClose();
-        }, 2000); 
-      })
-      .catch((error) => {
-        console.error('Login error:', error);
-      });
-  };
-
-  if (!isOpen) {
-    return null;
-  }
-
-  return (
-    <div style={modalStyles.overlay}>
-      <div style={modalStyles.modal}>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Username:
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Password:
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <button type="submit">Login</button>
-          <button type="button" onClick={onClose}>
-            Cancel
-          </button>
-        </form>
-        {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
-        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      </div>
-    </div>
-  );
+    return (
+        <>
+            <Container>
+                <form className="login" onSubmit={formik.handleSubmit}>
+                    <h2 className="text-center mb-4">Log in</h2>
+                    {/* Username input */}
+                    <div className="mb-4">
+                        <div className="form-outline">
+                            <input required type="text" name="username" value={formik.values.username} onChange={formik.handleChange} className="form-control" />
+                            <label className="form-label" htmlFor="username">Username</label>
+                        </div>
+                    </div>
+                    {/* Password input */}
+                    <div className="mb-4">
+                        <div className="form-outline">
+                            <input required type="password" name="password" value={formik.values.password} onChange={formik.handleChange} className="form-control" />
+                            <label className="form-label" htmlFor="password">Password</label>
+                        </div>
+                    </div>
+                    {/* Submit button */}
+                    <div className="mb-4 text-center">
+                        <button type="submit" className="btn btn-primary">LOG IN</button>
+                    </div>
+                    {/* Forgot password link */}
+                    <div className="mb-4 text-center">
+                        <a className="forgot-password" href="/forgot">Forgot Password?</a>
+                    </div>
+                </form>
+            </Container>
+            <Footer />
+        </>
+    );
 }
-
-const modalStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modal: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '5px',
-    maxWidth: '500px',
-    width: '100%',
-  },
-};
-
-export default LoginModal;
