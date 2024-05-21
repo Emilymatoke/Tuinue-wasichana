@@ -10,6 +10,7 @@ import CharityListingPage from './CharityListingPage';
 import CharityDetailPage from './CharityDetailPage';
 import UserDashboardPage from './UserDashboardPage';
 import AdminDashboardPage from './AdminDashboardPage';
+import Home from './components/Home';
 
 const App = () => {
   return (
