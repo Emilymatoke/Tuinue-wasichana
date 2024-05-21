@@ -1,7 +1,49 @@
 import React from 'react';
 
+// Progress bar component
+const ProgressBar = ({ label, progress }) => {
+  return (
+    <div className="progress-bar">
+      <div className="progress" style={{ width: `${progress}%` }}></div>
+      <span>{label}</span>
+    </div>
+  );
+};
 
 function CharityPage() {
+  // Sample data for progress bars
+  const progressData = [
+    { label: 'Sanitary Towels Distributed', progress: 75 },
+    { label: 'Clean Water Projects', progress: 50 },
+    { label: 'Sanitation Facilities', progress: 35 },
+  ];
+
+  // Sample data for testimonials
+  const testimonials = [
+    {
+      name: 'Atieno',
+      role: 'Donor',
+      quote: "I'm proud to support such an impactful cause. Keep up the great work!",
+    },
+    {
+      name: 'Wanjiku',
+      role: 'Beneficiary',
+      quote: 'Thanks to this charity, I can attend school without worrying about basic necessities.',
+    },
+  ];
+
+  // Sample data for impact stories
+  const impactStories = [
+    {
+      title: 'A Girl\'s Journey to Education',
+      story:
+        'Meet Sarah, a young girl from a rural village. Before our charity intervened, Sarah had to walk long distances to fetch water, often missing school. With the installation of clean water facilities, Sarah\'s life has changed. She now attends school regularly and dreams of becoming a doctor.',
+      image: 'https://www.shutterstock.com/image-photo/happy-little-girl-walking-street-600nw-2187361011.jpg',  
+    },
+    
+    // Add more impact stories as needed
+  ];
+
   return (
     <div className="charity-page">
       <header className="hero-section">
@@ -39,6 +81,60 @@ function CharityPage() {
           </div>
         </div>
       </section>
+
+      {/* Progress Bars for Impact */}
+      <section className="progress-section">
+        <div className="container">
+          <h2>Our Impact Progress</h2>
+          <div className="progress-bars">
+            {progressData.map((data, index) => (
+              <ProgressBar key={index} label={data.label} progress={data.progress} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <div className="container">
+          <h2>What People Are Saying</h2>
+          <div className="testimonials">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="testimonial">
+                <p>{testimonial.quote}</p>
+                <p className="testimonial-info">
+                  <span className="name">{testimonial.name}</span>, <span className="role">{testimonial.role}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+{/* Impact Stories */}
+<section className="impact-stories-section">
+  <div className="container">
+    <h2>Impact Stories</h2>
+    <div className="impact-stories">
+      {impactStories.map((story, index) => (
+        <div key={index} className="impact-story">
+          <div className="story-image">
+            <img src={story.image} alt={`Image for ${story.title}`} />
+          </div>
+          <div className="story-content">
+            <h3>{story.title}</h3>
+            <p>{story.story}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+    
     </div>
   );
 }
