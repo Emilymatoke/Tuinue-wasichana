@@ -1,34 +1,42 @@
-// App.js
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css'; // Import global CSS file
-import Header from './Header';
-import Footer from './Footer';
-import HomePage from './HomePage';
-import CharityListingPage from './CharityListingPage';
-import CharityDetailPage from './CharityDetailPage';
-import UserDashboardPage from './UserDashboardPage';
-import AdminDashboardPage from './AdminDashboardPage';
+import DonorProfile from './donorprofile';
+import MakeDonation from './makedonation';
+
+const donorInfo = {
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+  location: 'New York, NY',
+};
+
+const charities = [
+  { id: 1, name: 'Tujengane' },
+  { id: 2, name: 'Fight Period Stigmatization' },
+  { id: 3, name: 'Sisi kwa sisi' },
+];
 
 const App = () => {
+  const [selectedCharity, setSelectedCharity] = React.useState(charities[0].id);
+
+  const handleDonation = (e, donationAmount) => {
+    e.preventDefault();
+    const selectedCharityObj = charities.find(c => c.id === selectedCharity);
+    if (selectedCharityObj) {
+      const donationData = {
+        name: selectedCharityObj.name,
+        amount: donationAmount,
+      };
+      // Rest of the function code here
+      console.log('Donation Data:', donationData);
+    } else {
+      console.error('Selected charity not found');
+    }
+  };
+
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main className="main-content">
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/charities" exact component={CharityListingPage} />
-            <Route path="/charities/:id" component={CharityDetailPage} />
-            <Route path="/dashboard" component={UserDashboardPage} />
-            <Route path="/admin" component={AdminDashboardPage} />
-            {/* Add more routes as needed */}
-          </Switch>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <DonorProfile donorInfo={donorInfo} />
+      <MakeDonation charities={charities} selectedCharity={selectedCharity} onDonation={handleDonation} />
+    </div>
   );
 };
 
