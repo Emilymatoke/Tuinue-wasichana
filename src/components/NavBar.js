@@ -15,14 +15,9 @@ function NavBar({ user }) {
         <header>
           <div className="header-class-container">
             <div className="flex-1">
-              <div className="flex items-center">
-                <img src={logo} alt="Logo" className="logo" />
+              <div className="flex-1 items-center px-5 py-5">
               </div>
-              <p>Tuinue Wasichana</p>
               <div className="flex-1 text-right">
-                <span className="mr-4">
-                  <i className="fa fa-phone"></i> +254 719 405 599
-                </span>
                 <span className="mr-4">
                   <i className="fa fa-envelope"></i> <a href="mailto:info@tuinuewasichana.com">info@tuinuewasichana.com</a>
                 </span>
@@ -34,9 +29,6 @@ function NavBar({ user }) {
           <NavLink to="/" className="hover:text-gray-400">Home</NavLink>
           <NavLink to="/about" className="hover:text-gray-400">About</NavLink>
           <NavLink to="/donate" className="hover:text-gray-400">Donate</NavLink>
-          <button onClick={handleShow} className="hover:text-gray-400">
-            Menu
-          </button>
           <div>
             <Link to="/signup" className="px-3">Sign Up</Link>
             <Link to="/login" className="px-3">Login</Link>
@@ -68,35 +60,7 @@ function NavBar({ user }) {
           </div>
         </div>
       )}
-      
-      <div className="content">
-        <div className="hero-section">
-          <div className="hero-text">
-            <h1>Let's break barriers and unleash potential with Tuinue Wasichana!</h1>
-            <p>Providing more than just pads, we're delivering clean water and sanitation. Empowering girls for a brighter future in school and beyond.</p>
-          </div>
-          <div className="hero-image">
-            <img src="../image/frontend.jpg" alt="Empowered girls" />
-          </div>
-        </div>
-        <div className="stats-section">
-          <div className="stat">
-            <div className="stat-icon">📦</div>
-            <div className="stat-number">102</div>
-            <div className="stat-label">People donated</div>
-          </div>
-          <div className="stat">
-            <div className="stat-icon">🎒</div>
-            <div className="stat-number">80</div>
-            <div className="stat-label">Girls got sponsored</div>
-          </div>
-          <div className="stat">
-            <div className="stat-icon">💰</div>
-            <div className="stat-number">200k Ksh</div>
-            <div className="stat-label">Money raised</div>
-          </div>
-        </div>
-      </div>
+
     </>
   );
 }
