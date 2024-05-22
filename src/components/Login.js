@@ -1,53 +1,24 @@
-import { useFormik } from "formik";
-import { Container } from 'react-bootstrap';
-import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
+import { Link } from'react-router-dom';
+import '../styling/loggin.css';
 
-export default function Login({ onLogin }) {
-    const navigate = useNavigate();
-    const formik = useFormik({
-        enableReinitialize: true,
-        initialValues: {
-            username: "",
-            password: "",
-        },
-        onSubmit: (values) => {
-            onLogin(values);
-            formik.resetForm();
-            navigate('/dashboard');
-        }
-    });
+
+
+const Login = () => {
+    console.log("login component rendered");
 
     return (
-        <>
-            <Container>
-                <form className="login" onSubmit={formik.handleSubmit}>
-                    <h2 className="text-center mb-4">Log in</h2>
-                    {/* Username input */}
-                    <div className="mb-4">
-                        <div className="form-outline">
-                            <input required type="text" name="username" value={formik.values.username} onChange={formik.handleChange} className="form-control" />
-                            <label className="form-label" htmlFor="username">Username</label>
-                        </div>
-                    </div>
-                    {/* Password input */}
-                    <div className="mb-4">
-                        <div className="form-outline">
-                            <input required type="password" name="password" value={formik.values.password} onChange={formik.handleChange} className="form-control" />
-                            <label className="form-label" htmlFor="password">Password</label>
-                        </div>
-                    </div>
-                    {/* Submit button */}
-                    <div className="mb-4 text-center">
-                        <button type="submit" className="btn btn-primary">LOG IN</button>
-                    </div>
-                    {/* Forgot password link */}
-                    <div className="mb-4 text-center">
-                        <a className="forgot-password" href="/forgot">Forgot Password?</a>
-                    </div>
-                </form>
-            </Container>
-            <Footer />
-        </>
-    );
+        <div className='warpper'>
+            <div className='container1'>
+                <h1 className='heading'>Welcome to the platform</h1>
+                  <br />
+
+                  <p className='description'>Unlock more features by Signing in</p>
+                  <Link to="/userlogin" className='link login-link'>User Login</Link>
+                  <Link to="/adminlogin" className='link signup-link'>Admin Login</Link>
+            </div>
+        </div>
+    )
 }
+
+
+export default Login;
