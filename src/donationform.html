@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Donation Form</h2>
+        <div class="stories">
+            <h3>Beneficiary Stories</h3>
+            <div class="story">
+                <img src="images/image1.jpg" alt="Beneficiary 1" class="story-image">
+                <p class="story-text"> Mary’s education has already been disrupted by poverty, which is why she is still at primary school at the age of 17. Many children here drop out of school intermittently, for one or two years at a time, because their families cannot afford to send them. According to UNICEF, more than 1.2 million primary school-age children in Kenya, which has a population of 50 million, do not attend school at all.
+
+                    Period poverty – being unable to work or attend school because of lack of funds for sanitary products – makes life even harder for girls.
+                    
+                    Mary has tried to find solutions, but improvising is not always ideal.
+                    
+                    “When I was 15 in class 6, I used to share used pads with fellow classmates before my class teacher warned against it because it was unhygienic,” she says. Sharing pads is particularly dangerous – research shows that some 4.9 percent of people living in semi-arid parts of Kenya have HIV.
+                    
+                    Not only that, but girls going to school while they have their periods risk severe teasing and taunting by the boys, Mary explains.
+                    
+                    Like the other girls in her community, Mary faces a stark choice – risk her health or risk her education.</p>
+            </div>
+            <div class="story">
+                <img src="images/image2.jpg" alt="Beneficiary 2" class="story-image">
+                <p class="story-text">Sandra, a student at Lkisin Primary School, recounts the day she first encountered her period with a mix of innocence and uncertainty. “I was only 11 years old when I received my period,” she says, her voice carrying the weight of a memory long-held. “Nobody told me what to expect or do. In our school, we only had male teachers.” Sandra’s candid narrative reveals the lack of information and support that young girls face in these communities.
+
+                    “I felt wet and rushed to the toilet. When I checked, there was blood all over. I thought something had cut me, but I wasn’t feeling any pain,” Sandra recalls. “I decided to go back to class, but during break time, I stood up, and I had dirtied my chair. My uniform was also stained.” Faced with an unexpected situation, Sandra improvised, using her school sweater and a piece of paper to salvage the situation. “I decided to stay back in class and not go to break,” she continues. As the day came to an end, she raced home, avoiding her friends, conjuring up excuses to shield her newfound secret.
+                    
+                    Sandra’s story mirrors that of many young girls in rural areas. Poverty and the lack of proper menstrual hygiene resources compound the challenges they face. In resource-constrained households, proper dignity kits often become a luxury, and the consequences ripple through every aspect of their lives. The story of her stained chair and her makeshift solutions exemplifies the hardships faced by girls in communities where education about menstrual hygiene is a rarity.
+                    
+                    Upon reaching home, Sandra resorted to using dirty clothes to manage her situation. “I put them in my underwear to stop the blood, but it didn’t work. The next day, I told my mother that I wasn’t feeling well, just so I could stay home. I never told her about my period until she saw my beddings.” Sandra’s account reflects the stigma and silence that surrounds menstruation in these communities. “We pastoralists sleep in hides and skins, and in the morning, we have to expose our beddings to the sun. My mother asked me about my period, and I didn’t lie. She said she felt bad because she could have told me about it earlier.” Sandra’s mother, like many mothers in these circumstances, regrets the lack of open conversation around this natural process.
+                    
+                    In the absence of sanitary towels, Sandra’s mother improvised, providing her daughter with leaves and rags, tied carefully to provide some semblance of protection. “Because nobody knew about sanitary towels then,” Sandra adds. This revelation underscores the critical need for education and awareness, not just among the girls but within the community as a whole. “I stayed home the whole week without going to school,” she concludes, highlighting the grim consequences that inadequate menstrual hygiene resources can have on a girl’s education.</p>
+            </div>
+        </div>
+        <form id="donationForm">
+            <div class="form-group">
+                <label for="charity">Select Charity:</label>
+                <select id="charity" name="charity" required>
+                    <option value="">Choose a charity</option>
+                    <option value="Empowering Girlhood">Charity 1</option>
+                    <option value="Ending Period Stigmatization">Charity 2</option>
+                    <option value="Wangari Foundation">Charity 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Donation Amount:</label>
+                <input type="number" id="amount" name="amount" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="donationType">Donation Type:</label>
+                <select id="donationType" name="donationType" required>
+                    <option value="one-time">One-time Donation</option>
+                    <option value="monthly">Monthly Donation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="anonymous" name="anonymous">
+                    Donate Anonymously
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="card-element">Credit or debit card:</label>
+                <div id="card-element"></div>
+                <div id="card-errors" role="alert"></div>
+            </div>
+            <button type="submit">Donate</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
