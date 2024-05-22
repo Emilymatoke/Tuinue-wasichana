@@ -1,24 +1,21 @@
-import { Link } from'react-router-dom';
-import '../styling/loggin.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-
-const Login = () => {
-    console.log("login component rendered");
-
+const LoginPage = () => {
     return (
-        <div className='warpper'>
-            <div className='container1'>
-                <h1 className='heading'>Welcome to the platform</h1>
-                  <br />
-
-                  <p className='description'>Unlock more features by Signing in</p>
-                  <Link to="/userlogin" className='link login-link'>User Login</Link>
-                  <Link to="/adminlogin" className='link signup-link'>Admin Login</Link>
-            </div>
+        <div>
+            <h1>Login Page</h1>
+            <Link to="/adminlogin">
+                <button>Admin Login</button>
+            </Link>
+            <Link to="/charitylogin">
+                <button>Charity Login</button>
+            </Link>
+            <Link to="/donorlogin">
+                <button>Donor Login</button>
+            </Link>
         </div>
-    )
+    );
 }
 
-
-export default Login;
+export default LoginPage;

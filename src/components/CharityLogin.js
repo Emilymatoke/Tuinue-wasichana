@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styling/Adminlogin.css";
+import "../styling/Charitylogin.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Adminlogin = () => {
+const CharityLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Adminlogin = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("url_placement/admin/login", {
+            const response = await fetch("url_placement/charity/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const Adminlogin = () => {
                 toast.success("Login Successful", {
                     autoClose: 100,
                     onClose: () => {
-                        navigate("/adminhome");
+                        navigate("/charityhome");
                     },
                 });
             } else {
@@ -40,7 +40,7 @@ const Adminlogin = () => {
     return (
         <div className="wrapper2">
             <div className="container1">
-                <h2>Admin Sign In</h2>
+                <h2>Charity Sign In</h2>
                 <form onSubmit={handleSignIn}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -72,4 +72,4 @@ const Adminlogin = () => {
     );
 };
 
-export default Adminlogin;
+export default CharityLogin;

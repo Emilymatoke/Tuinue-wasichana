@@ -1,79 +1,101 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import "../styling/Navbar.css";
 
-const Home = () => {
+function NavBar({ user }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const navigate = useNavigate();
+
   return (
-    <div>
-      {/* Header */}
-      <header className="bg-blue-600 text-white py-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div>
-            <img src={logo} alt="Tuinue Wasichana Logo" className="h-10 inline-block mr-2" />
-            <span className="text-lg font-bold">Tuinue Wasichana</span>
+    <>
+      <div className="header-container">
+        <header>
+          <div className="header-class-container">
+            <div className="flex-1">
+              <div className="flex items-center">
+                <img src={logo} alt="Logo" className="logo" />
+              </div>
+              <p>Tuinue Wasichana</p>
+              <div className="flex-1 text-right">
+                <span className="mr-4">
+                  <i className="fa fa-phone"></i> +254 719 405 599
+                </span>
+                <span className="mr-4">
+                  <i className="fa fa-envelope"></i> <a href="mailto:info@tuinuewasichana.com">info@tuinuewasichana.com</a>
+                </span>
+              </div>
+            </div>
           </div>
-          <div>
-            <span className="mr-4">+254 719 405 599</span>
-            <span>info@tuinuewasichana.com</span>
-          </div>
-          <div>
-            <span className="ml-4">Welcome Guest</span>
-          </div>
-        </div>
-      </header>
-
-      {/* Navigation */}
-      <nav className="bg-gray-800 text-white py-2">
-        <div className="container mx-auto flex justify-between">
-          <div>
-            <Link to="/" className="px-3">Home</Link>
-            <Link to="/about" className="px-3">About</Link>
-            <Link to="/donate" className="px-3">Donate</Link>
-          </div>
+        </header>
+        <nav className="nav-links">
+          <NavLink to="/" className="hover:text-gray-400">Home</NavLink>
+          <NavLink to="/about" className="hover:text-gray-400">About</NavLink>
+          <NavLink to="/donate" className="hover:text-gray-400">Donate</NavLink>
           <div>
             <Link to="/signup" className="px-3">Sign Up</Link>
             <Link to="/login" className="px-3">Login</Link>
           </div>
-        </div>
-      </nav>
+          <div>
+            <button onClick={handleShow} className="text-white focus:outline-none">
+              <i className="fa fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
 
-      {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-20 text-center">
-        <div className="container mx-auto">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Tuinue Wasichana</h1>
-          <p className="text-lg">Empowering school-going girls with sanitary towels, clean water, and proper sanitation facilities.</p>
-        </div>
-      </section>
-
-      {/* Impact Section */}
-      <section className="py-20 bg-gray-100 text-center">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-blue-600 mb-10">Our Charity Impact</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 shadow rounded">
-              <h3 className="text-2xl font-bold mb-2">Sanitary Towels Distributed</h3>
-              <p>Over 10,000 girls provided with sanitary towels annually.</p>
+      {show && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex justify-end">
+          <div className="bg-white w-64 h-full shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-xl font-semibold">Tuinue Wasichana</h2>
+              <button onClick={handleClose} className="text-gray-600 focus:outline-none">
+                <i className="fa fa-times"></i>
+              </button>
             </div>
-            <div className="bg-white p-6 shadow rounded">
-              <h3 className="text-2xl font-bold mb-2">Clean Water Projects</h3>
-              <p>20 schools equipped with clean water facilities.</p>
-            </div>
-            <div className="bg-white p-6 shadow rounded">
-              <h3 className="text-2xl font-bold mb-2">Sanitation Facilities</h3>
-              <p>15 schools provided with new sanitation facilities.</p>
-            </div>
+            <nav className="p-4">
+              <NavLink to="/" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Home</NavLink>
+              <NavLink to="/about" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>About</NavLink>
+              <NavLink to="/donate" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Donate</NavLink>
+              <NavLink to="/signup" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Sign Up</NavLink>
+              <NavLink to="/login" className="block py-2 px-4 text-gray-700 hover:bg-gray-200" onClick={handleClose}>Login</NavLink>
+            </nav>
           </div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6">
-        <div className="container mx-auto text-center">
-          <p>Privacy Policy | Terms of Service | Contact Us</p>
+      )}
+      
+      <div className="content">
+        <div className="hero-section">
+          <div className="hero-text">
+            <h1>Let's break barriers and unleash potential with Tuinue Wasichana!</h1>
+            <p>Providing more than just pads, we're delivering clean water and sanitation. Empowering girls for a brighter future in school and beyond.</p>
+          </div>
+          <div className="hero-image">
+            <img src="../image/frontend.jpg" alt="Empowered girls" />
+          </div>
         </div>
-      </footer>
-    </div>
+        <div className="stats-section">
+          <div className="stat">
+            <div className="stat-icon">📦</div>
+            <div className="stat-number">102</div>
+            <div className="stat-label">People donated</div>
+          </div>
+          <div className="stat">
+            <div className="stat-icon">🎒</div>
+            <div className="stat-number">80</div>
+            <div className="stat-label">Girls got sponsored</div>
+          </div>
+          <div className="stat">
+            <div className="stat-icon">💰</div>
+            <div className="stat-number">200k Ksh</div>
+            <div className="stat-label">Money raised</div>
+          </div>
+        </div>
+      </div>
+    </>
   );
-};
+}
 
-export default Home;
+export default NavBar;

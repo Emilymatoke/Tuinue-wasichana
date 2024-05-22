@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './AdminPage.css';
 
 function AdminPage() {
   const [charityRequests, setCharityRequests] = useState([]);
@@ -32,45 +33,45 @@ function AdminPage() {
   };
 
   return (
-    <div className="admin-page container mx-auto mt-8">
-      <h2 className="text-2xl mb-4">Admin Dashboard</h2>
+    <div className="admin-page">
+      <h2>Admin Dashboard</h2>
 
-      <div className="stats grid grid-cols-3 gap-4 mb-8">
-        <div className="stat bg-white p-4 rounded shadow">
-          <h3 className="text-lg">Total Charities</h3>
-          <p className="text-xl">{charitiesCount}</p>
+      <div className="stats">
+        <div className="stat">
+          <h3>Total Charities</h3>
+          <p>{charitiesCount}</p>
         </div>
-        <div className="stat bg-white p-4 rounded shadow">
-          <h3 className="text-lg">Total Donors</h3>
-          <p className="text-xl">{donorsCount}</p>
+        <div className="stat">
+          <h3>Total Donors</h3>
+          <p>{donorsCount}</p>
         </div>
-        <div className="stat bg-white p-4 rounded shadow">
-          <h3 className="text-lg">Total Amount</h3>
-          <p className="text-xl">${totalAmount}</p>
+        <div className="stat">
+          <h3>Total Amount</h3>
+          <p>${totalAmount}</p>
         </div>
       </div>
 
-      <h3 className="text-xl mb-4">Pending Charity Requests</h3>
-      <table className="min-w-full bg-white">
+      <h3>Pending Charity Requests</h3>
+      <table className="charity-table">
         <thead>
           <tr>
-            <th className="py-2 px-4 border">Name</th>
-            <th className="py-2 px-4 border">Email</th>
-            <th className="py-2 px-4 border">Phone</th>
-            <th className="py-2 px-4 border">Message</th>
-            <th className="py-2 px-4 border">Actions</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {charityRequests.map(request => (
             <tr key={request.id}>
-              <td className="border px-4 py-2">{request.fullName}</td>
-              <td className="border px-4 py-2">{request.email}</td>
-              <td className="border px-4 py-2">{request.phoneNumber}</td>
-              <td className="border px-4 py-2">{request.message}</td>
-              <td className="border px-4 py-2">
+              <td>{request.fullName}</td>
+              <td>{request.email}</td>
+              <td>{request.phoneNumber}</td>
+              <td>{request.message}</td>
+              <td>
                 <button
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                  className="approve-button"
                   onClick={() => handleApprove(request.id)}
                 >
                   Approve
@@ -85,3 +86,4 @@ function AdminPage() {
 }
 
 export default AdminPage;
+
