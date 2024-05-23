@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-const Adminlogin = () => {
+const Userlogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
    
@@ -12,7 +12,7 @@ const Adminlogin = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/adminlogin", {
+            const response = await fetch("http://localhost:5555/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const Adminlogin = () => {
                 toast.success("Login Successful", {
                     autoClose: 100,
                     onClose: () => {
-                        window.location.href = "/Adminpage";
+                        window.location.href = "/Userhome";
                     },
                 });
             } else {
@@ -82,4 +82,4 @@ const Adminlogin = () => {
 
 }
 
-export default Adminlogin;
+export default Userlogin;

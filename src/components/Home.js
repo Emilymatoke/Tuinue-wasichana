@@ -34,6 +34,9 @@ function NavBar({ user }) {
           <NavLink to="/" className="hover:text-gray-400">Home</NavLink>
           <NavLink to="/about" className="hover:text-gray-400">About</NavLink>
           <NavLink to="/donate" className="hover:text-gray-400">Donate</NavLink>
+          <button onClick={handleShow} className="hover:text-gray-400">
+            Menu
+          </button>
           <div>
             <Link to="/signup" className="px-3">Sign Up</Link>
             <Link to="/login" className="px-3">Login</Link>

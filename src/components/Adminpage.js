@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './AdminPage.css';
+// import './AdminPage.css';
 
-function AdminPage() {
+function Adminpage() {
   const [charityRequests, setCharityRequests] = useState([]);
   const [charitiesCount, setCharitiesCount] = useState(0);
   const [donorsCount, setDonorsCount] = useState(0);
@@ -85,5 +85,4 @@ function AdminPage() {
   );
 }
 
-export default AdminPage;
-
+export default Adminpage;
