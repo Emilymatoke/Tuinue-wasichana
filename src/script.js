@@ -1,4 +1,4 @@
-// Initialize Stripe
+
 const stripe = Stripe('your-publishable-key-here');
 const elements = stripe.elements();
 const card = elements.create('card');
@@ -7,18 +7,15 @@ card.mount('#card-element');
 document.getElementById('donationForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    // Get form values
     const formData = getFormData();
     const message = document.getElementById('message');
 
-    // Validate form data
     const validationMessage = validateFormData(formData);
     if (validationMessage) {
         displayMessage(validationMessage, 'red');
         return;
     }
 
-    // Create payment method
     const {paymentMethod, error} = await stripe.createPaymentMethod('card', card, {
         billing_details: {
             name: formData.name,
@@ -30,8 +27,7 @@ document.getElementById('donationForm').addEventListener('submit', async functio
         displayMessage(error.message, 'red');
         return;
     }
-
-    // Process the donation
+    
     formData.paymentMethodId = paymentMethod.id;
     processDonation(formData);
 });
