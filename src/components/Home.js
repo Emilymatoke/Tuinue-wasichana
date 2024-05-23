@@ -148,4 +148,6 @@ const ShuffleGrid = () => {
 };
 
 
-export default Hero;
+
+
+export default Home;

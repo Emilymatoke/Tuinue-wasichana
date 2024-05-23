@@ -28,6 +28,7 @@ function App() {
           <Route path="/adminlogin" element={<Adminlogin />} />
           <Route path="/userlogin" element={<Userlogin />} />
           </Route>
+
         </Routes>
         {/* <Footer /> */}
       </div>
