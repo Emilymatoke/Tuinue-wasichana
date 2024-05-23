@@ -13,8 +13,9 @@ const Login = () => {
                   <br />
 
                   <p className='description'>Unlock more features by Signing in</p>
-                  <Link to="/userlogin" className='link login-link'>User Login</Link>
+                  <Link to="/userlogin" className='link login-link'>Charity Login</Link>
                   <Link to="/adminlogin" className='link signup-link'>Admin Login</Link>
+                  <Link to="/adminlogin" className='link login-link'>Donor Login</Link>
             </div>
         </div>
     )

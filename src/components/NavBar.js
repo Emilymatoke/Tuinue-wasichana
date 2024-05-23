@@ -11,11 +11,11 @@ function NavBar({ user }) {
 
   return (
     <>
-      <div className="header-container">
+       <div className="header-container">
         <header>
           <div className="header-class-container">
             <div className="flex-1">
-              <div className="flex-1 items-center px-5 py-5">
+              <div className="flex items-center">
               </div>
               <div className="flex-1 text-right">
                 <span className="mr-4">
