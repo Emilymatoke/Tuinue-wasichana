@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import NavBar from './components/NavBar';
 import About from './components/About';
 import Donate from './components/Donate';
 import SignUp from './components/SignUp';
@@ -28,6 +27,9 @@ function App() {
           <Route path="/adminlogin" element={<Adminlogin />} />
           <Route path="/userlogin" element={<Userlogin />} />
           <Route path="/Adminpage" element={<Adminpage />} />
+
+          
+
         </Routes>
         
       </div>
