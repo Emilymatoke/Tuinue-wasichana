@@ -1,86 +1,98 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    background-color: #fde7e9; /* Light pink */
+    color: #4a4a4a; /* Dark gray */
 }
 
 .container {
-    background: #fff;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    width: 300px;
-    text-align: left;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.stories {
-    margin-bottom: 20px;
+h2, h3 {
+    color: #ff6f61; /* Coral pink */
 }
 
 .story {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    transition: transform 0.2s;
+
 }
 
 .story-image {
     width: 100%;
-    height: auto;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .story-text {
     margin-top: 10px;
-    font-size: 14px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+    color: #ff6f61; /* Coral pink */
 }
 
-input[type="text"], input[type="email"], input[type="number"], select {
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ff6f61; /* Coral pink */
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-#card-element {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
+input[type="checkbox"] {
+    margin-right: 5px;
 }
 
 button {
-    width: 100%;
-    padding: 10px 20px;
-    background: #28a745;
+    background-color: #ff6f61; /* Coral pink */
     color: #fff;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #218838;
+    background-color: #ff5246; /* Lighter Coral pink */
 }
 
 #message {
     margin-top: 20px;
-    color: red;
-    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#message.success {
+    background-color: #b3ffb3; /* Pale green */
+    color: #006600; /* Dark green */
+}
+
+#message.error {
+    background-color: #ffb3b3; /* Light pink */
+    color: #cc0000; /* Dark red */
+}
+
+#card-element {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ff6f61; /* Coral pink */
+    border-radius: 5px;
 }
