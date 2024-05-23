@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Logo from '../assets/logo.png'
+// import Logo from '../assets/logo.png'
 
-const Hero = () => {
+const Home = () => {
   return (
     <div className="bg-rose-950">
       <section
@@ -13,7 +13,10 @@ const Hero = () => {
       >
         <div>
         <h3 className="text-6xl md:text-6xl text-yellow-500 font-bold py-2 px-4 rounded transition-all">
-            Welcome to Tuinue Wasichana
+            Welcome to {""}
+            <span>
+              Tuinue Wasichana
+            </span>
           </h3>
           <p className="text-base md:text-lg text-yellow-500 my-4 md:my-6 font-mono">
           Join us in our mission to uplift and empower the next generation of powerful women. Together, we can make a lasting impact and pave the way for a brighter future.
