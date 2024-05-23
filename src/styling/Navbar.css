@@ -13,7 +13,7 @@ body {
   
   /* Header Container */
   .header-container {
-    background-color: #FFC0CB; /* 60% Pink */
+    background-color: #6f4721; /* 60% Pink */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,26 +78,26 @@ body {
   
   .nav-links a {
     text-decoration: none;
-    color: #000; /* 30% Black */
+    color: #000000; /* 30% Black */
     font-size: 16px;
     transition: color 0.3s ease;
   }
   
   .nav-links a:hover {
-    color: #666; /* Lighter black/gray for hover */
+    color: #ffffff; /* Lighter black/gray for hover */
   }
   
   .nav-links button {
     background: none;
     border: none;
-    color: #000; /* 30% Black */
+    color: #000000; /* 30% Black */
     font-size: 16px;
     cursor: pointer;
     transition: color 0.3s ease;
   }
   
   .nav-links button:hover {
-    color: #666; /* Lighter black/gray for hover */
+    color: #ffffff; /* Lighter black/gray for hover */
   }
   
   /* Mobile Menu */
@@ -170,70 +170,4 @@ body {
   
   .text-white {
     color: #fff; /* 10% White */
-  }
-  
-  /* Content Section */
-  .content {
-    padding: 20px;
-  }
-  
-  .hero-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #FFC0CB; /* 60% Pink */
-  }
-  
-  .hero-text {
-    flex: 1;
-    color: #000; /* 30% Black */
-  }
-  
-  .hero-text h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero-text p {
-    font-size: 1.2rem;
-  }
-  
-  .hero-image {
-    flex: 1;
-  }
-  
-  .hero-image img {
-    max-width: 100%;
-    border: 5px solid #FFC0CB;
-    border-radius: 10px;
-  }
-  
-  .stats-section {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-  }
-  
-  .stat {
-    text-align: center;
-    background-color: #FFC0CB; /* 60% Pink */
-    padding: 20px;
-    border-radius: 10px;
-    width: 200px;
-  }
-  
-  .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .stat-number {
-    font-size: 1.5rem;
-    color: #000; /* 30% Black */
-  }
-  
-  .stat-label {
-    font-size: 1rem;
-    color: #000; /* 30% Black */
   }

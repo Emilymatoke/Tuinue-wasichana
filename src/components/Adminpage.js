@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-// import './AdminPage.css';
+import '../styling/AdminPage.css';
 
 function Adminpage() {
   const [charityRequests, setCharityRequests] = useState([]);
-  const [charitiesCount, setCharitiesCount] = useState(0);
-  const [donorsCount, setDonorsCount] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
+  const [charitiesCount, setCharitiesCount] = useState(10); // Initial value added
+  const [donorsCount, setDonorsCount] = useState(25); // Initial value added
+  const [totalAmount, setTotalAmount] = useState(5000); // Initial value added
 
   useEffect(() => {
     // Fetch charity requests from the server
@@ -27,7 +27,7 @@ function Adminpage() {
     // Approve request
     fetch(`/api/charity-requests/${id}/approve`, { method: 'POST' })
       .then(response => response.json())
-      .then(data => {
+      .then(() => {
         setCharityRequests(charityRequests.filter(request => request.id !== id));
       });
   };
@@ -35,6 +35,11 @@ function Adminpage() {
   return (
     <div className="admin-page">
       <h2>Admin Dashboard</h2>
+
+      <div className="welcome-dashboard">
+        <h3>Welcome to the Admin Dashboard</h3>
+        <p>Here you can manage charity requests, view statistics, and perform administrative tasks to ensure the smooth operation of the platform.</p>
+      </div>
 
       <div className="stats">
         <div className="stat">
@@ -86,3 +91,4 @@ function Adminpage() {
 }
 
 export default Adminpage;
+
