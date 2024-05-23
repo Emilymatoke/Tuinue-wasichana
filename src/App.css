@@ -51,16 +51,6 @@ body {
   padding: 20px;
 }
 
-.hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://popcouncil.org/wp-content/uploads/2022/09/GirlsRead.png') center/cover no-repeat;
-  color: white;
-  padding: 100px 20px;
-}
-
-.hero-content {
-  max-width: 600px;
-  margin: 0 auto;
-}
 
 .btn {
   padding: 10px 20px;
